@@ -21,7 +21,7 @@ Copy the skill directory into your Claude Code skills folder:
 
 ```bash
 git clone https://github.com/pcjtse/daily-podcast-update.git
-cp -r daily-podcast-update/spotify-podcast-updates ~/.claude/skills/
+cp -r daily-podcast-update/spotify-podcast-updates ~/.openclaw/skills/
 ```
 
 ### 2. Set up Spotify credentials
@@ -29,7 +29,7 @@ cp -r daily-podcast-update/spotify-podcast-updates ~/.claude/skills/
 Copy the template and fill in your values:
 
 ```bash
-cp ~/.claude/skills/spotify-podcast-updates/assets/.env.example ~/.env.spotify
+cp ~/.openclaw/skills/spotify-podcast-updates/assets/.env.example ~/.env.spotify
 ```
 
 Edit `~/.env.spotify` with your `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN`. See [`spotify-podcast-updates/assets/.env.example`](./spotify-podcast-updates/assets/.env.example) for step-by-step instructions on obtaining a refresh token from the Spotify Developer Dashboard.
@@ -45,7 +45,7 @@ export SPOTIFY_REFRESH_TOKEN=your_refresh_token
 ### 3. Install Python dependencies
 
 ```bash
-pip install -r ~/.claude/skills/spotify-podcast-updates/scripts/requirements.txt
+pip install -r ~/.openclaw/skills/spotify-podcast-updates/scripts/requirements.txt
 ```
 
 ### 4. Use the skill in Claude Code
