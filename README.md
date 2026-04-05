@@ -11,35 +11,50 @@ Connects to the Spotify Web API and reports any new podcast episodes released in
 ## Quick Start
 
 **Prerequisites**
-- Python 3.8+
-- pip
+- [Claude Code](https://claude.ai/code) (openclaw)
+- Python 3.8+ and pip
 - A [Spotify Developer](https://developer.spotify.com/dashboard) account
 
-**Setup**
+### 1. Install the skill
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/pcjtse/daily-podcast-update.git
-   cd daily-podcast-update
-   ```
+Copy the skill directory into your Claude Code skills folder:
 
-2. Copy the credentials template and fill in your values:
-   ```bash
-   cp spotify-podcast-updates/assets/.env.example .env
-   # Edit .env with your SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN
-   source .env
-   ```
-   See [`spotify-podcast-updates/assets/.env.example`](./spotify-podcast-updates/assets/.env.example) for step-by-step instructions on obtaining a refresh token.
+```bash
+git clone https://github.com/pcjtse/daily-podcast-update.git
+cp -r daily-podcast-update/spotify-podcast-updates ~/.claude/skills/
+```
 
-3. Install dependencies:
-   ```bash
-   pip install -r spotify-podcast-updates/scripts/requirements.txt
-   ```
+### 2. Set up Spotify credentials
 
-4. Run:
-   ```bash
-   python spotify-podcast-updates/scripts/get_new_episodes.py
-   ```
+Copy the template and fill in your values:
+
+```bash
+cp ~/.claude/skills/spotify-podcast-updates/assets/.env.example ~/.env.spotify
+```
+
+Edit `~/.env.spotify` with your `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN`. See [`spotify-podcast-updates/assets/.env.example`](./spotify-podcast-updates/assets/.env.example) for step-by-step instructions on obtaining a refresh token from the Spotify Developer Dashboard.
+
+Export the variables in your shell profile (e.g. `~/.bashrc` or `~/.zshrc`) so they are available in every Claude Code session:
+
+```bash
+export SPOTIFY_CLIENT_ID=your_client_id
+export SPOTIFY_CLIENT_SECRET=your_client_secret
+export SPOTIFY_REFRESH_TOKEN=your_refresh_token
+```
+
+### 3. Install Python dependencies
+
+```bash
+pip install -r ~/.claude/skills/spotify-podcast-updates/scripts/requirements.txt
+```
+
+### 4. Use the skill in Claude Code
+
+Start a Claude Code session and ask:
+
+> "What new podcast episodes came out today?"
+
+Claude will automatically trigger the `spotify-podcast-updates` skill, check your Spotify subscriptions, and report any episodes released in the last 24 hours.
 
 **Example output**
 ```
